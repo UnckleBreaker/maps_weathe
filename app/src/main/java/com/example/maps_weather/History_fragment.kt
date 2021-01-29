@@ -1,16 +1,18 @@
 package com.example.maps_weather
 
-import android.R.attr.description
-import android.R.attr.priority
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.maps_weather.Dbase.Note
 import kotlinx.android.synthetic.main.list_fragment.*
 
@@ -21,7 +23,7 @@ class History_fragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.list_fragment,container,false)
+        return inflater.inflate(R.layout.list_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,5 +41,37 @@ class History_fragment : Fragment() {
                     adapter.setNotes(notes as List<Note>);
                 }
             })
+        ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
+            0,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                noteViewModel.delete(adapter.getNoteAt(viewHolder.adapterPosition))
+            }
+        }).attachToRecyclerView(recycle_view)
+        adapter.setOnItemClickListener(object :NoteAdapter.OnItemClickListener{
+            override fun onItemClick(note: Note?) {
+                activity?.let{
+
+                    val intent = Intent (it, ResultActivity::class.java)
+                    intent.putExtra(ResultActivity().id, note?.id);
+                    intent.putExtra(ResultActivity().time, note?.time);
+                    intent.putExtra(ResultActivity().adress, note?.adress);
+                    intent.putExtra(ResultActivity().location, note?.location);
+                    it.startActivity(intent)
+                }
+            }
+        })
+
+
     }
+
 }

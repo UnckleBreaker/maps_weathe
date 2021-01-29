@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.item.view.*
 
 class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteHolder>() {
     private var notes: List<Note> = ArrayList()
+    lateinit var listner: OnItemClickListener
 
     @NonNull
     override fun onCreateViewHolder(
@@ -31,6 +32,15 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteHolder>() {
         holder.itemView.adres.setText(currentNote.adress)
         holder.itemView.locatio.setText(currentNote.location)
 
+        holder.itemView.setOnClickListener (object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                val position=  holder.adapterPosition
+                if(listner!= null && position!= RecyclerView.NO_POSITION){
+                    listner.onItemClick(notes.get(position))
+                }
+            }
+        })
+
     }
 
     override fun getItemCount(): Int {
@@ -41,6 +51,7 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteHolder>() {
         this.notes = notes
         notifyDataSetChanged()
     }
+    fun getNoteAt(position: Int) =notes.get(position)
 
      inner class NoteHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
@@ -54,4 +65,11 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteHolder>() {
             location = itemView.findViewById(R.id.locatio)
         }
     }
+    interface OnItemClickListener {
+        fun onItemClick(note: Note?)
+    }
+    fun setOnItemClickListener(Listner:OnItemClickListener){
+        listner=Listner
+    }
+
 }
