@@ -1,9 +1,9 @@
-package com.example.maps_weather
+package com.example.maps_weather.adapters
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.fragment.app.FragmentStatePagerAdapter
-import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.maps_weather.ui.CurFragment
+import com.example.maps_weather.ui.History_fragment
 
 
 class ViewPagerAdapter(fManager: FragmentManager) : FragmentPagerAdapter(fManager) {
@@ -12,7 +12,7 @@ class ViewPagerAdapter(fManager: FragmentManager) : FragmentPagerAdapter(fManage
         when(position){
             0->return CurFragment()
             1->return History_fragment()
-            else-> return  CurFragment()
+            else-> return CurFragment()
         }
     }
 

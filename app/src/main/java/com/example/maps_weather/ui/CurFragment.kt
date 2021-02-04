@@ -1,4 +1,4 @@
-package com.example.maps_weather
+package com.example.maps_weather.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,14 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.example.maps_weather.API.ApiAddressFactory
-import com.example.maps_weather.API.ApiFactory
-import com.example.maps_weather.API.ApiWeather
-import com.example.maps_weather.Dbase.Note
-import com.example.maps_weather.Responce.AddressResponce
-import com.example.maps_weather.Responce.WeatherResponce
+import com.example.maps_weather.api.ApiAddressFactory
+import com.example.maps_weather.api.ApiFactory
+import com.example.maps_weather.db.Note
+import com.example.maps_weather.service.LocationService
+import com.example.maps_weather.R
+import com.example.maps_weather.responce.AddressResponce
+import com.example.maps_weather.responce.WeatherResponce
 import io.reactivex.Observable
-import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.current.*

@@ -1,19 +1,17 @@
-package com.example.maps_weather
+package com.example.maps_weather.service
 
 import android.Manifest
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.example.maps_weather.R
 
 class LocationService(var context: Context?) : AppCompatActivity() {
     lateinit var locationManager: LocationManager

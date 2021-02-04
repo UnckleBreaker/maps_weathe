@@ -1,4 +1,4 @@
-package com.example.maps_weather.API
+package com.example.maps_weather.api
 
 import okhttp3.Interceptor
 import okhttp3.Response

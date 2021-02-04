@@ -1,10 +1,12 @@
-package com.example.maps_weather
+package com.example.maps_weather.ui
 
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.maps_weather.R
+import com.example.maps_weather.adapters.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -25,7 +27,10 @@ class MainActivity : AppCompatActivity() {
         }
         else
             enableView()
-        view_pager.adapter = ViewPagerAdapter(supportFragmentManager)
+        view_pager.adapter =
+            ViewPagerAdapter(
+                supportFragmentManager
+            )
         tab_layout.setupWithViewPager(view_pager)
         tab_layout.addOnTabSelectedListener(object :TabLayout.OnTabSelectedListener{
             override fun onTabReselected(tab: TabLayout.Tab?) {

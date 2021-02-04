@@ -1,4 +1,4 @@
-package com.example.maps_weather
+package com.example.maps_weather.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
-import com.example.maps_weather.Dbase.Note
+import com.example.maps_weather.db.Note
+import com.example.maps_weather.R
 import kotlinx.android.synthetic.main.item.view.*
 
 
@@ -68,7 +69,7 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteHolder>() {
     interface OnItemClickListener {
         fun onItemClick(note: Note?)
     }
-    fun setOnItemClickListener(Listner:OnItemClickListener){
+    fun setOnItemClickListener(Listner: OnItemClickListener){
         listner=Listner
     }
 

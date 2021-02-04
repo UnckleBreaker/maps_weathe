@@ -1,4 +1,4 @@
-package com.example.maps_weather.Dbase
+package com.example.maps_weather.db
 
 import android.content.Context
 import android.os.AsyncTask

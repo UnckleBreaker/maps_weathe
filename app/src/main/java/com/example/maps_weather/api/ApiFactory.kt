@@ -1,4 +1,4 @@
-package com.example.maps_weather.API
+package com.example.maps_weather.api
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -6,27 +6,27 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-object ApiAddressFactory {
+object ApiFactory {
     private var SokHttpClient: OkHttpClient? = null
-    private var SapiAdress: ApiWeather? = null
-    val adressApi: ApiWeather?
+    private var SapiWeather: ApiWeather? = null
+    val weatherApi: ApiWeather?
         get() {
-            var apiAdress = SapiAdress
-            if (apiAdress == null) {
+            var apiWeather = SapiWeather
+            if (apiWeather == null) {
                 synchronized(ApiWeather::class.java) {
-                    apiAdress = SapiAdress
-                    if (apiAdress == null) {
-                        SapiAdress = createService()
-                        apiAdress = SapiAdress
+                    apiWeather = SapiWeather
+                    if (apiWeather == null) {
+                        SapiWeather = createService()
+                        apiWeather = SapiWeather
                     }
                 }
             }
-            return apiAdress
+            return apiWeather
         }
 
     private fun createService(): ApiWeather {
         return Retrofit.Builder()
-            .baseUrl("https://maps.googleapis.com/maps/api/geocode/")
+            .baseUrl("https://api.openweathermap.org/data/2.5/")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -38,7 +38,7 @@ object ApiAddressFactory {
         private get() {
             var okHttpClient = SokHttpClient
             if (okHttpClient == null) {
-                synchronized(ApiAddressFactory::class.java) {
+                synchronized(ApiFactory::class.java) {
                     okHttpClient = SokHttpClient
                     if (okHttpClient == null) {
                         SokHttpClient = buildClient()
@@ -54,7 +54,7 @@ object ApiAddressFactory {
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         return OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
-            .addInterceptor(ApiKeyAdressInterceptor())
+            .addInterceptor(ApiKeyInterceptor())
             .build()
     }
 }

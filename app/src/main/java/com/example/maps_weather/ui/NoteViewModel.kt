@@ -1,11 +1,11 @@
-package com.example.maps_weather
+package com.example.maps_weather.ui
 
 import android.app.Application
 import androidx.annotation.NonNull
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.example.maps_weather.Dbase.Note
-import com.example.maps_weather.Dbase.NoteRepository
+import com.example.maps_weather.db.Note
+import com.example.maps_weather.db.NoteRepository
 
 
 class NoteViewModel(@NonNull application: Application?) : AndroidViewModel(application!!) {

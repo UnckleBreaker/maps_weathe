@@ -1,4 +1,4 @@
-package com.example.maps_weather.Responce
+package com.example.maps_weather.responce
 
 
 import com.google.gson.annotations.Expose

@@ -1,7 +1,7 @@
-package com.example.maps_weather.API
+package com.example.maps_weather.api
 
-import com.example.maps_weather.Responce.AddressResponce
-import com.example.maps_weather.Responce.WeatherResponce
+import com.example.maps_weather.responce.AddressResponce
+import com.example.maps_weather.responce.WeatherResponce
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
