@@ -66,9 +66,7 @@ class MainActivity : AppCompatActivity() {
                 if (grantResults[i] == PackageManager.PERMISSION_DENIED) {
                     allSuccess = false
                     val requestAgain =
-                        Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && shouldShowRequestPermissionRationale(
-                            permissions[i]
-                        )
+                        Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && shouldShowRequestPermissionRationale(permissions[i])
                     if (requestAgain) {
                         Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
                     } else {

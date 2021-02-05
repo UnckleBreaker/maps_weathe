@@ -35,6 +35,7 @@ class CurFragment : Fragment() {
         return inflater.inflate(R.layout.current, container, false)
     }
 
+
     @SuppressLint("CheckResult")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         loca = LocationService(cont).getLocation()!!
